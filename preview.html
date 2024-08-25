@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - AI Video Caption & Overlay Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./stylesdashboard.css">
+    <script type="module" src="firebaseinit.js"></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">AI Video Tool</div>
+        <div class="nav-buttons">
+            <button class="btn" id="logoutBtn">Logout</button>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero">
+            <input type="file" id="videoUploader" accept="video/*">
+            <video id="videoPlayer" controls></video>
+        </div>
+        <div class="controls">
+            <label for="effectSelect">Select Effect:</label>
+            <select id="effectSelect">
+                <option value="none">None</option>
+                <option value="grayscale">Grayscale</option>
+                <option value="sepia">Sepia</option>
+                <option value="invert">Invert Colors</option>
+            </select>
+            <button id="applyEffect">Apply Effect</button>
+            <button id="downloadButton">Download Video</button>
+        </div>
+    </div>
+    
+
+    <div class="footer">
+        <p>&copy; 2024 AI Video Tool. All rights reserved.</p>
+    </div>
+
+    <script type="module">
+        import { auth, db, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from './firebaseinit.js';
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = 'index.html';
+            }
+        });
+
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        logoutBtn.addEventListener('click', function () {
+            auth.signOut().then(() => {
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                console.error("Logout failed:", error);
+            });
+        });
+    </script>
+</body>
+</html>

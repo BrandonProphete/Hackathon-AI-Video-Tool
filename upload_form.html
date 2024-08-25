@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+
+<body>
+
+    <div class="hero">
+    <div>
+        <h1> Upload Your Video At The Bottom</h1>
+        <p>Please make sure the video file is an MP4 File</p>
+    </div>
+    <div class="text-overlay">Your Video. Your Story.</div>
+    </div>
+    
+    <div class="form-container">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="videoUpload">Choose a video file:</label>
+        <input type="file" id="videoUpload" name="video" accept="video/*" required>
+        <br><br>
+        <input type="submit" value="Upload Video">
+    </form>
+
+    </div>
+    <script>
+        // You can add JavaScript here for additional functionality, if needed
+    </script>
+</body>
+</html>
